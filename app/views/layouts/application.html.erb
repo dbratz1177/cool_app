@@ -2,13 +2,33 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", 
+  		"data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
 </head>
 <body>
-
-<%= yield %>
-
+	<header class="navbar navbar-fixed-top navbar-inverse"> #CSS classes
+		      <div class="container"> #...as specified by Bootstrap
+        <%= link_to "sample app", '#', id: "logo" %> # "%=" is the signal for 
+        		embedded Ruby - id's allow for idiosyncratic styling
+        <nav> # No hardset reason why nav is different from div, but nice,
+        			common, real life division
+          <ul class="nav navbar-nav pull-right"> # More semantic-relevance-
+          			determined by Bootstrap classes
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<div class="container">
+      <%= yield %>
+</div>
 </body>
 </html>
